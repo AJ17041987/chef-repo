@@ -1,6 +1,6 @@
-chef gives you tools to model your infrastructure the way you want.
+chef gives you different tools to model your infrastructure the way you want.
 
-the levels in chef are
+the seven levels in chef are
 
 1.organizations
 2.environments
