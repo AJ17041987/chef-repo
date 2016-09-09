@@ -1,0 +1,7 @@
+a chef managed infrastructure consists of 3 things
+
+CHEF SERVER
+
+CHEF WORKSTATION 
+
+CHEF CLIENT

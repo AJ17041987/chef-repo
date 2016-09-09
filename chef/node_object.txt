@@ -1,0 +1,73 @@
+a node is any physical ,virtual or cloud machines that is configured to be maintained by a chef.
+
+when you are writing recipes ,the node object is always available to you.
+
+[ajitesh@localhost chef-repo]$ knife node list
+target1
+[ajitesh@localhost chef-repo]$
+
+
+[ajitesh@localhost chef-repo]$ knife client list
+cm_s-validator
+target1
+[ajitesh@localhost chef-repo]$
+
+
+each node in your organization should have a unique name.
+
+chef defaults to the fully qualified domain name of the server i.e. in the format server.domain.com .
+
+we overrode it to target1 to make it easier.
+
+to see node details.use below command.
+
+[ajitesh@localhost chef-repo]$ knife node show target1
+Node Name:   target1
+Environment: _default
+FQDN:        localhost
+IP:          192.168.209.137
+Run List:    recipe[yum], recipe[apache]
+Roles:
+Recipes:     yum, yum::default, apache, apache::default
+Platform:    centos 7.2.1511
+Tags:
+[ajitesh@localhost chef-repo]$
+
+nodes are made up of attributes
+  any of the attributes are discovered automatically(attributes like ip,platform, address ,number of cpus etc.)
+  many other objects in chef can also add node attributes (cookbooks ,roles and environments ,recipes ,attribute files)
+  
+  
+nodes are stored and indexed on the chef server.
+
+to display all the information about node attributes in chef use.
+
+sudo ohai |less
+
+to display this chef node information on chef workstation use
+
+knife node show target1 -l
+
+[ajitesh@localhost chef-repo]$ knife node show target1 -Fj
+{
+  "name": "target1",
+  "chef_environment": "_default",
+  "run_list": [
+  "recipe[yum]",
+  "recipe[apache]"
+]
+,
+  "normal": {
+    "tags": [
+
+    ]
+  }
+}
+
+
+we can also view single attribute about the node.
+
+[ajitesh@localhost chef-repo]$ knife node show target1 -a fqdn
+target1:
+  fqdn: localhost
+  

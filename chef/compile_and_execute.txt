@@ -1,0 +1,26 @@
+when a chef client runs and encounters a recipe what it does is it compiles the recipe and then executes it.
+
+compile phase
+           chef cliet will load all of the cookbooks from the runlist.
+		   it will read each recipe.
+		   after reading each recipe it will build a resource collection.
+		   
+		   for ex. resource collection=[package["apache2"],service["apache2"],cookbook_file["/var/www/index.html"]
+		   
+
+
+
+execution phase
+               the resource collection will be passed to execution phase.
+       		   for ex. resource collection=[package["apache2"],service["apache2"],cookbook_file["/var/www/index.html"]
+			   
+			   it will take all the resources and ask appropriate questions about the resources like
+			   
+			   package["apache2"] is the resource in the appropriate state.
+			    if yes then chef client will do nothing.
+				if no then chef client will take action to bring the resource in line with the desired state.
+				
+			after bringing the first resource in resource in the desired state chef client will move onto next resource in 
+            the resource collection.			
+			   
+		   

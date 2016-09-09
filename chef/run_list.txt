@@ -1,0 +1,6 @@
+run_lists in your node should appear in the order in which you want them to execute.
+
+run lists also have an order simillar to resources in recipes.
+
+the run list at the top is executed first and then run list which is second is executed second and so on.
+

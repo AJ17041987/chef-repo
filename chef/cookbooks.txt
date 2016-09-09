@@ -1,0 +1,11 @@
+recipes are stored in cookbooks
+
+cookbooks contain recipes,templates,files ,custom resources etc.
+
+cookbooks help in code reuse and modularity.
+
+A cookbook is like a package for recipes.
+
+it contains all the files,templates ,recipes , libraries etc required to configure a portion of your infrastructure
+
+typically they map 1:1 to a piece of software or functionality.

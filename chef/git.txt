@@ -1,0 +1,89 @@
+git init is used to initialize a simple folder as git repository.
+
+git status is used to see the status of the current repository
+
+# On branch master
+[root@localhost chef-repo]# git init
+Initialized empty Git repository in /home/ajitesh/chef-repo/.git/
+
+
+[root@localhost chef-repo]# git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	.chef/
+#	.gitignore
+#	README.md
+#	cookbooks/
+#	roles/
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+git add is used to add files in a repository which haven't been added like any new file you have created. its just like svn add.
+
+[root@localhost chef-repo]# git add .
+
+now if we do git status it will show
+
+[root@localhost chef-repo]# git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   .chef/knife.rb
+#	new file:   .gitignore
+#	new file:   README.md
+#	new file:   cookbooks/chefignore
+#	new file:   cookbooks/starter/attributes/default.rb
+#	new file:   cookbooks/starter/files/default/sample.txt
+#	new file:   cookbooks/starter/metadata.rb
+#	new file:   cookbooks/starter/recipes/default.rb
+#	new file:   cookbooks/starter/templates/default/sample.erb
+#	new file:   roles/starter.rb
+
+
+
+git commit is used to commit files into the repository
+
+[root@localhost chef-repo]# git commit -m "the starter kit from chef"
+[master (root-commit) ee29118] the starter kit from chef
+ Committer: root <root@localhost.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 10 files changed, 226 insertions(+)
+ create mode 100644 .chef/knife.rb
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 cookbooks/chefignore
+ create mode 100644 cookbooks/starter/attributes/default.rb
+ create mode 100644 cookbooks/starter/files/default/sample.txt
+ create mode 100644 cookbooks/starter/metadata.rb
+ create mode 100644 cookbooks/starter/recipes/default.rb
+ create mode 100644 cookbooks/starter/templates/default/sample.erb
+ create mode 100644 roles/starter.rb
+
+
+ 
+now again if you do git status you will see.
+
+[root@localhost chef-repo]# git status
+# On branch master
+nothing to commit, working directory clean
+
+

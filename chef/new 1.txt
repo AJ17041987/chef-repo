@@ -1,0 +1,10 @@
+[ajitesh@localhost chef-repo]$ knife node show target1
+Node Name:   target1
+Environment: _default
+FQDN:        localhost
+IP:          192.168.209.137
+Run List:    recipe[yum], recipe[apache]
+Roles:
+Recipes:     yum, yum::default, apache, apache::default
+Platform:    centos 7.2.1511
+Tags:

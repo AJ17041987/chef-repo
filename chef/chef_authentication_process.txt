@@ -1,0 +1,30 @@
+with chef server we have a number of private keys.
+
+chef server requires these keys to authenticate.
+
+we have 
+   client.pem which is the private key for API client.
+   
+   validation.pem which is the private key for ORGNAME validator.
+   
+first thing in the validation process is that chef client will look into /etc/chef on the linux box to find if client.pem exists.
+
+[ajitesh@localhost ~]$ cd /etc/chef/
+[ajitesh@localhost chef]$ ls
+client.pem  client.rb  first-boot.json
+
+
+if the client.pem exists on the server where chef client is installed .chef client will use this client.pem to authenticate itself 
+with the chef server.
+
+however if that file doesn't exist it will look for file /etc/chef/validation.pem.
+
+if both client.pem and alidation.pem is not found chef server will return 401 not found.
+
+if validation.pem is found then the chef client will use the validation.pem to request an api client.
+
+the chef server in response will generate the client.pem and send it back to chef client.
+
+after getting the client.pem chef client will sign in with the chef server.
+
+so validation.pem is only required if we don't have client.pem.

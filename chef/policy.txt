@@ -1,0 +1,18 @@
+in chef we define policies for each resource in our chef configuration.
+
+using these policies we make sure that resources are in desired state but we don't have to tell chef client how to get 
+a resource in a desired state the chef client is smart enough to figure that out .
+
+policies are stored on chef server which chef client pulls out and applies it on a node.
+
+policies are different for different resources.
+
+A resource in chef represents a piece of a system and its desired state.
+    for example. A resource can be a package that should be installed. here package is a piece of a system and installed is its desired state.
+	same way a service that should be running . here service is a piece of a system and its desired state is that it should be running.
+	same way a file that should be managed.
+	a cron job that should be running.
+	a user that should be managed.
+	and so on.
+	
+	                                       

@@ -1,0 +1,171 @@
+[ajitesh@localhost chef-repo]$ knife bootstrap --help
+knife bootstrap [SSH_USER@]FQDN (options)
+        --bootstrap-curl-options OPTIONS
+                                     Add options to curl when install chef-client
+        --bootstrap-install-command COMMANDS
+                                     Custom command to install chef-client
+        --bootstrap-no-proxy [NO_PROXY_URL|NO_PROXY_IP]
+                                     Do not proxy locations for the node being bootstrapped; this option is used internally by Opscode
+        --bootstrap-proxy PROXY_URL  The proxy server for the node being bootstrapped
+        --bootstrap-proxy-pass PROXY_PASS
+                                     The proxy authentication password for the node being bootstrapped
+        --bootstrap-proxy-user PROXY_USER
+                                     The proxy authentication username for the node being bootstrapped
+    -t TEMPLATE,                     Bootstrap Chef using a built-in or custom template. Set to the full path of an erb template or use one of the built-in templates.
+        --bootstrap-template
+        --bootstrap-url URL          URL to a custom installation script
+        --bootstrap-vault-file VAULT_FILE
+                                     A JSON file with a list of vault(s) and item(s) to be updated
+        --bootstrap-vault-item VAULT_ITEM
+                                     A single vault and item to update as "vault:item"
+        --bootstrap-vault-json VAULT_JSON
+                                     A JSON string with the vault(s) and item(s) to be updated
+        --bootstrap-version VERSION  The version of Chef to install
+        --bootstrap-wget-options OPTIONS
+                                     Add options to wget when installing chef-client
+    -N, --node-name NAME             The Chef node name for your new node
+        --server-url URL             Chef Server URL
+        --chef-zero-host HOST        Host to start chef-zero on
+        --chef-zero-port PORT        Port (or port range) to start chef-zero on.  Port ranges like 1000,1010 or 8889-9999 will try all given ports until one works.
+    -k, --key KEY                    API Client Key
+        --[no-]color                 Use colored output, defaults to enabled
+    -c, --config CONFIG              The configuration file to use
+        --config-option OPTION=VALUE Override a single configuration option
+        --defaults                   Accept default values for all questions
+        --disable-editing            Do not open EDITOR, just accept the data as is
+    -d, --distro DISTRO              Bootstrap a distro using a template. [DEPRECATED] Use -t / --bootstrap-template option instead.
+    -e, --editor EDITOR              Set the editor to use for interactive commands
+        --encrypt                    If 'secret' or 'secret_file' is present in your config, then encrypt data bags using it
+    -E, --environment ENVIRONMENT    Set the Chef environment (except for in searches, where this will be flagrantly ignored)
+        --[no-]fips                  Enable fips mode
+    -j JSON_ATTRIBS,                 A JSON string to be added to the first run of chef-client
+        --json-attributes
+        --json-attribute-file FILE   A JSON file to be used to the first run of chef-client
+    -F, --format FORMAT              Which format to use for output
+    -A, --forward-agent              Enable SSH agent forwarding
+        --hint HINT_NAME[=HINT_FILE] Specify Ohai Hint to be set on the bootstrap target. Use multiple --hint options to specify multiple hints.
+        --[no-]host-key-verify       Verify host key, enabled by default.
+        --identity-file IDENTITY_FILE
+                                     The SSH identity file used for authentication. [DEPRECATED] Use --ssh-identity-file instead.
+        --[no-]listen                Whether a local mode (-z) server binds to a port
+    -z, --local-mode                 Point knife commands at local repository instead of server
+    -u, --user USER                  API Client Username
+        --node-ssl-verify-mode [peer|none]
+                                     Whether or not to verify the SSL cert for all HTTPS requests.
+        --[no-]node-verify-api-cert  Verify the SSL cert for HTTPS requests to the Chef server API.
+        --policy-group POLICY_GROUP  Policy group name to use (--policy-name must also be given)
+        --policy-name POLICY_NAME    Policyfile name to use (--policy-group must also be given)
+        --prerelease                 Install the pre-release chef gems
+        --sudo-preserve-home         Preserve non-root user HOME environment variable with sudo
+        --print-after                Show the data after a destructive operation
+    -r, --run-list RUN_LIST          Comma separated list of roles/recipes to apply
+    -s, --secret                     The secret key to use to encrypt data bag item values. Can also be defaulted in your config with the key 'secret'
+        --secret-file SECRET_FILE    A file containing the secret key to use to encrypt data bag item values. Can also be defaulted in your config with the key 'secret_file'
+    -G, --ssh-gateway GATEWAY        The ssh gateway
+    -i IDENTITY_FILE,                The SSH identity file used for authentication
+        --ssh-identity-file
+    -P, --ssh-password PASSWORD      The ssh password
+    -p, --ssh-port PORT              The ssh port
+    -x, --ssh-user USERNAME          The ssh username
+        --tags TAGS                  Comma separated list of tags to apply to the node
+        --template-file TEMPLATE     Full path to location of template to use. [DEPRECATED] Use -t / --bootstrap-template option instead.
+        --sudo                       Execute the bootstrap via sudo
+        --use-sudo-password          Execute the bootstrap via sudo with password
+    -V, --verbose                    More verbose output. Use twice for max verbosity
+    -v, --version                    Show chef version
+    -y, --yes                        Say yes to all prompts for confirmation
+    -h, --help                       Show this message
+[ajitesh@localhost chef-repo]$ knife bootstrap 192.168.209.135 --sudo -x ajitesh -P ajitesh -N "target1"
+Creating new client for target1
+Creating new node for target1
+Connecting to 192.168.209.135
+192.168.209.135 
+192.168.209.135 We trust you have received the usual lecture from the local System
+192.168.209.135 Administrator. It usually boils down to these three things:
+192.168.209.135 
+192.168.209.135     #1) Respect the privacy of others.
+192.168.209.135     #2) Think before you type.
+192.168.209.135     #3) With great power comes great responsibility.
+192.168.209.135 
+192.168.209.135 knife sudo password: 
+Enter your password: 
+192.168.209.135 
+192.168.209.135 ajitesh is not in the sudoers file.  This incident will be reported.
+[ajitesh@localhost chef-repo]$ visudo
+visudo: /etc/sudoers: Permission denied
+visudo: /etc/sudoers: Permission denied
+[ajitesh@localhost chef-repo]$ su
+Password: 
+[root@localhost chef-repo]# visudo
+[root@localhost chef-repo]# exit
+exit
+[ajitesh@localhost chef-repo]$ sudo service nfs status
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for ajitesh: 
+Redirecting to /bin/systemctl status  nfs.service
+? nfs-server.service - NFS server and services
+   Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)
+[ajitesh@localhost chef-repo]$ knife bootstrap 192.168.209.135 --sudo -x ajitesh -P ajitesh -N "target1"
+Node target1 exists, overwrite it? (Y/N) y
+Client target1 exists, overwrite it? (Y/N) y
+Creating new client for target1
+Creating new node for target1
+Connecting to 192.168.209.135
+192.168.209.135 knife sudo password: 
+Enter your password: 
+192.168.209.135 
+192.168.209.135 ajitesh is not in the sudoers file.  This incident will be reported.
+[ajitesh@localhost chef-repo]$ knife bootstrap 192.168.209.135 --sudo -x ajitesh -P ajitesh -N "target1"
+Node target1 exists, overwrite it? (Y/N) y
+Client target1 exists, overwrite it? (Y/N) y
+Creating new client for target1
+Creating new node for target1
+Connecting to 192.168.209.135
+192.168.209.135 knife sudo password: 
+Enter your password: 
+192.168.209.135 
+192.168.209.135 -----> Installing Chef Omnibus (-v 12)
+192.168.209.135 downloading https://omnitruck-direct.chef.io/chef/install.sh
+192.168.209.135   to file /tmp/install.sh.59802/install.sh
+192.168.209.135 trying wget...
+192.168.209.135 el 7 x86_64
+192.168.209.135 Getting information for chef stable 12 for el...
+192.168.209.135 downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=12&p=el&pv=7&m=x86_64
+192.168.209.135   to file /tmp/install.sh.59807/metadata.txt
+192.168.209.135 trying wget...
+192.168.209.135 sha1	505a2b31f4ca0190fa83d5a0590ca761e5a5b14e
+192.168.209.135 sha256	75aa9e38f8fb0c4c529fe6f935478521716e4f889f2b8457c131c468302e40de
+192.168.209.135 url	https://packages.chef.io/stable/el/7/chef-12.13.30-1.el7.x86_64.rpm
+192.168.209.135 version	12.13.30
+192.168.209.135 downloaded metadata file looks valid...
+192.168.209.135 downloading https://packages.chef.io/stable/el/7/chef-12.13.30-1.el7.x86_64.rpm
+192.168.209.135   to file /tmp/install.sh.59807/chef-12.13.30-1.el7.x86_64.rpm
+192.168.209.135 trying wget...
+192.168.209.135 Comparing checksum with sha256sum...
+192.168.209.135 Installing chef 12
+192.168.209.135 installing with rpm...
+192.168.209.135 warning: /tmp/install.sh.59807/chef-12.13.30-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+192.168.209.135 Preparing...                          ################################# [100%]
+192.168.209.135 Updating / installing...
+192.168.209.135    1:chef-12.13.30-1.el7              ################################# [100%]
+192.168.209.135 Thank you for installing Chef!
+192.168.209.135 Starting the first Chef Client run...
+192.168.209.135 Starting Chef Client, version 12.13.30
+192.168.209.135 resolving cookbooks for run list: []
+192.168.209.135 Synchronizing Cookbooks:
+192.168.209.135 Installing Cookbook Gems:
+192.168.209.135 Compiling Cookbooks...
+192.168.209.135 [2016-08-13T00:46:57-07:00] WARN: Node target1 has an empty run list.
+192.168.209.135 Converging 0 resources
+192.168.209.135 
+192.168.209.135 Running handlers:
+192.168.209.135 Running handlers complete
+192.168.209.135 Chef Client finished, 0/0 resources updated in 13 seconds

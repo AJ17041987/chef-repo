@@ -1,0 +1,15 @@
+the steps to design your infrastructure with chef
+
+1.first determine the desired state of your infrastructure.
+
+2.identify the resources(services,packages,users etc) required to meet that state.
+
+3.gather these resources into recipes.
+
+4.compose a run list from recipes and roles(database server,application server etc.)
+
+5.apply the run list to each node in your environment.
+
+6.as chef client runs on your node it will make sure that your node adheres to a policy defined in the chef server.
+
+with chef you can also manage configuration drift that is a change in configuration can also be easily managed by a chef.

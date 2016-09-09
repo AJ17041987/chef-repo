@@ -1,0 +1,2 @@
+search is another vey important features of chef where chef server stores searchable amout of data about your chef infrastructure.
+

@@ -1,0 +1,28 @@
+so this is how it looks till now 
+                                organization (Mindtree)
+	                                environment(staging,test,development,production etc)
+			                             roles(database server,application server,load balancing server etc.)
+					                           nodes(computer or server nodes)
+											   
+											   
+nodes can be pysical hardware or virtual instance or a cloud instance.
+
+each node
+     belongs to one organization
+	 belongs to one environment
+	 a node can have zero or more roles i.e. it can either be a database server or an application server or more or can have zero roles
+	                            in an environment.
+								
+								
+to make each node ahere to a policy or a number of policies chef client runs on each node
+         chef client gathers the current configuration of a system
+		 compares the current configuration with the desired configuration
+		 and if the node is not in the desired state chef client makes sure node adheres to a policy and goes back to desired state.
+		 
+
+
+chef client running on your node makes sure that your node adheres to a particular policy.
+
+policies are nothing but list of configuration items on your run list.
+
+a run list is what a chef client uses to bring a node to a desired state.		 

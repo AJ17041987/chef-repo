@@ -1,0 +1,20 @@
+knife is a command line tool which provides an interface between a local chef repository and the chef server.
+
+knife lets you manage
+  a.nodes
+  b.cookbooks and recipes
+  c.stores of json data(data bags) ,including encrypted data
+  d.environments
+  e.cloud resources including provisoning
+  f.the installation of chef on management workstations
+  g.searching for indexed data on the chef server.
+
+
+[ajitesh@localhost .chef]$ knife --version
+Chef: 12.13.30
+
+knife.rb is the configuration file for knife  
+
+[ajitesh@localhost chef-repo]$ knife node show target1 -a memory.total
+target1:
+  memory.total: 1646456kB

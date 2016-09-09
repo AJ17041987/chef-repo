@@ -1,0 +1,37 @@
+resources are the fundamental building blocks of chef configuration.
+
+resources are gathered into recipes
+
+recipes ensure that the system are in desired tate
+
+recipes are configuration files that describe resources and their desired state.
+
+So recipes can 
+       install and configure software components
+	   manage files
+	   deploy applications
+	   execute other recipes and so on.
+	   
+	   
+A recipe can be used configure multiple resources.
+           
+		   example:
+		          package "apache2"
+				  
+				  template "/etc/apach2/apach2.conf" do
+				        source "apache2.conf.erb"
+						owner "root"
+                        group "root"
+                        mode  "0644"
+                        variables(:allow_override => "all")
+                        notifies :reload, ":service[apache2]"
+                  end
+
+                  service "apache2" do
+                      action[:enable,:start]
+                      supports :reload => true
+				  end
+
+here service , package and template are resources which need to be configured .				  
+				         
+	   

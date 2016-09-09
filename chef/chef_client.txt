@@ -1,0 +1,92 @@
+[ajitesh@localhost ~]$ sudo chef-client
+[sudo] password for ajitesh:
+Starting Chef Client, version 12.13.30
+resolving cookbooks for run list: ["apache"]
+Synchronizing Cookbooks:
+  - apache (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 3 resources
+Recipe: apache::default
+  * yum_package[apache2] action install
+    * No candidate version available for apache2
+    ================================================================================
+    Error executing action `install` on resource 'yum_package[apache2]'
+    ================================================================================
+
+    Chef::Exceptions::Package
+    -------------------------
+    No candidate version available for apache2
+
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/apache/recipes/default.rb
+
+     10:        package "apache2" do
+     11:             action :install
+     12:        end
+     13:
+
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/apache/recipes/default.rb:10:in `from_file'
+
+    yum_package("apache2") do
+      package_name "apache2"
+      action [:install]
+      retries 0
+      retry_delay 2
+      default_guard_interpreter :default
+      declared_type :package
+      cookbook_name "apache"
+      recipe_name "default"
+      flush_cache {:before=>false, :after=>false}
+    end
+
+    Platform:
+    ---------
+    x86_64-linux
+
+
+Running handlers:
+[2016-08-13T06:06:55-07:00] ERROR: Running exception handlers
+Running handlers complete
+[2016-08-13T06:06:55-07:00] ERROR: Exception handlers complete
+Chef Client failed. 0 resources updated in 22 seconds
+[2016-08-13T06:06:56-07:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2016-08-13T06:06:56-07:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2016-08-13T06:06:56-07:00] ERROR: yum_package[apache2] (apache::default line 10) had an error: Chef::Exceptions::Package: No candidate version available for apache2
+[2016-08-13T06:06:56-07:00] FATAL: Chef::Exceptions::ChildConvergeError: Chef run process exited unsuccessfully (exit code 1)
+[ajitesh@localhost ~]$ sudo chef-client
+Starting Chef Client, version 12.13.30
+resolving cookbooks for run list: ["apache"]
+Synchronizing Cookbooks:
+  - apache (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 3 resources
+Recipe: apache::default
+  * yum_package[httpd] action install
+    - install version 2.4.6-40.el7.centos.4 of package httpd
+  * service[httpd] action enable
+    - enable service service[httpd]
+  * service[httpd] action start
+    - start service service[httpd]
+  * cookbook_file[/var/www/index.html] action create
+    - create new file /var/www/index.html
+    - update content in file /var/www/index.html from none to 93d785
+    --- /var/www/index.html     2016-08-13 06:10:48.734509135 -0700
+    +++ /var/www/.chef-index.html20160813-68384-1g67z5  2016-08-13 06:10:48.732509095 -0700
+    @@ -1 +1,7 @@
+    +<html>
+    +     <body>
+    +     <h1> Hi! there </h1>
+    +     </body>
+    +
+    +</html>
+    - change mode from '' to '0644'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 4/4 resources updated in 36 seconds

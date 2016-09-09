@@ -1,0 +1,1 @@
+redundency is having multiple servers as backup for the main server in case of failure.

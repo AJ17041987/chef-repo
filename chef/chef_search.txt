@@ -1,0 +1,16 @@
+knife is chef's command line utility .you can fire all kinds of command starting with knife.
+
+knife is very vast and can do a lot of things.
+
+knife search command.
+
+[ajitesh@localhost chef-repo]$ knife search node "*:*" -a fqdn
+1 items found
+
+target1:
+  fqdn: localhost
+
+
+:*: means all
+
+-a stands for attribute.

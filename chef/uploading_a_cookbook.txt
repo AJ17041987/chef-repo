@@ -1,0 +1,3 @@
+[ajitesh@localhost chef-repo]$ knife cookbook upload apache
+Uploading apache       [0.1.0]
+Uploaded 1 cookbook.

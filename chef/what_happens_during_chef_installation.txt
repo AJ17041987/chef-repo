@@ -1,0 +1,10 @@
+chef and all of its dependencies installed via an operating system specific package("Omnibus Installer").
+
+chef installation includes
+
+1.the ruby language used by chef
+2.knife - command line tool for administrators
+3.chef-client - client application
+4.ohai -system profiler
+
+and many more

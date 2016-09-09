@@ -1,0 +1,24 @@
+chef gives you tools to model your infrastructure the way you want.
+
+the levels in chef are
+
+1.organizations
+2.environments
+3.Roles 
+4.nodes
+5.receipes
+6.cookbooks
+7.search
+
+two types of enterprise chef servers are there 
+1.one is hosted chef server hosted by opscode and 
+2. the other one is a private enterprise chef
+
+chef treats your infrsstructure as a code.
+
+chef code should be treated as any other code base.
+
+****if you want to reconstruct your environment with chef you need just three things
+a.code repository where your chef code is stored
+b.data backup for your repository
+c.bare metal resources which needs to be configured using chef

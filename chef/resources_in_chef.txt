@@ -1,0 +1,12 @@
+1.Network
+2.files
+3.directories
+4.Symlinks
+5.Mounts
+6.Registry Key
+7.Users
+8.groups
+9.powershell scripts
+10.packages
+11.Services
+12.File system etc.

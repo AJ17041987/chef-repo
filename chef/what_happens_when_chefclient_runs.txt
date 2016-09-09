@@ -1,0 +1,26 @@
+when a chef client runs it builds the node i.e. it builds the node object i.e. data attributes about the node on which chef client is running.
+
+ohai is the utility which provides all the system level data.
+
+After building the node chef client will then authenticate with the chef server.
+
+after authenticating with chef server chef client enquires with the chef server what is its run lists look like.
+then the chef server will sync the cookbooks.
+
+if nothing has changed in the runlist i.e. there is no change in the cookbooks then chef client will download nothing.
+it will only sync the cookbooks if something has chamged.
+
+after that the chef client will load the cookbooks in memory.
+
+after loading the cookbooks into memory the chef client will run through all the recipes and bring the node inline with the policy.
+if the node is already inline with the resources defined in the recipes .chef will do nothing.
+
+if any of the steps fail chef client will exit.
+
+and if all the steps are success chef client will  do node.save i.e. it will share all the latest information about the chef client node
+back with the chef server.
+
+the last thing is running custom modules like notification handlers whose use cases include.
+      sending email about successful chef run.
+	  sending email about chef client run failure.
+	  monitoring chef client run time etc.

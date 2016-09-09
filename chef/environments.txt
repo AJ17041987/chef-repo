@@ -1,0 +1,29 @@
+environments model the life stages of your application.
+
+every organization starts with one environment
+
+environments to reflect your pattern and work flow
+a.development
+b.test
+c.staging
+d.production
+etc
+
+where as roles define the type of servers in your infrastructure
+like a 
+1.load balancing server
+2.database server
+3.application server
+4.monitoring server
+5.database cache server
+
+roles define policies
+       roles may include a list of chef configuration files that should be applied.
+	   that is a set of configuration files for a database server or an application server etc.
+       this set of configuration files are called a run list.
+
+roles may also include data attributes necessary for configuring your infrastructure
+      data attributes may include the port on which your server listens to like 7001 for weblogic.
+      data attributes may also include a list of default applications that must be deployed on the servers
+
+	  

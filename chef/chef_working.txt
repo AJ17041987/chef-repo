@@ -1,0 +1,19 @@
+a chef client installed on a node runs regularly on the node and checks the state of the resource on the node.
+
+a chef client regularly pulls policies from the chef server i.e. the policies it should follow.
+
+policies are stored on the chef server and include
+                                                 environments,roles ,cookbooks ,data bags etc.
+												 
+cookbooks contain recipes and attributes.
+
+the joining of a node with a set of policies is called a run list.
+
+the job of chef client is to download the run list and look for the recipes and enforce the policies on that server.
+
+the run list is a collection of policies that a node should follow.
+
+chef client obtains the the run list from the chef server.
+
+chef client ensures the node complies with the policy in the run list.
+

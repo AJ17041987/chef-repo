@@ -1,0 +1,3 @@
+ohai is the system profiler and collects all the data about a system i.e. a client system.
+
+the data it collects about the node is very extensive 
